@@ -1,4 +1,4 @@
-# video-Browsing Vue App
+# Video Browsing Vue App
 ```
 Browse videos from youtube using youtube API's
 ```
