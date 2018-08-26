@@ -3,6 +3,7 @@
     <img alt="Vue logo" src="./assets/logo.png">
     <SearchBar @termChange="onTermChange"></SearchBar>
     <VideoList />
+    {{ videos }}
     <HelloWorld msg="Welcome Rizwan, In Vue.js App "/>
   </div>
 </template>
@@ -22,6 +23,11 @@ export default {
     SearchBar,
     VideoList
   },
+  data() {
+    return {
+      videos: []
+    };
+  },
   methods: {
     onTermChange: searchTerm => {
       console.log("searchTerm is: ", searchTerm);
@@ -34,8 +40,10 @@ export default {
             q: searchTerm
           }
         })
-        .then(data => {
-          console.log("youtube response is: ", data);
+        .then(res => {
+          console.log("youtube response is: ", res.data.items);
+          this.videos = res.data.items;
+          console.log('after setting videos: ', this.videos);
         });
     }
   }
