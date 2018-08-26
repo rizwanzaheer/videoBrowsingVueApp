@@ -2,6 +2,7 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <SearchBar @termChange="onTermChange"></SearchBar>
+    <VideoList />
     <HelloWorld msg="Welcome Rizwan, In Vue.js App "/>
   </div>
 </template>
@@ -10,27 +11,32 @@
 import axios from "axios";
 import HelloWorld from "./components/HelloWorld.vue";
 import SearchBar from "./components/SearchBar.vue";
+import VideoList from "./components/VideoList.vue";
+
 const API_KEY = "AIzaSyBDHxTtzOZM4d_0inRjfvyQc8YZh9T4O-k";
 
 export default {
   name: "app",
   components: {
     HelloWorld,
-    SearchBar
+    SearchBar,
+    VideoList
   },
   methods: {
     onTermChange: searchTerm => {
       console.log("searchTerm is: ", searchTerm);
-      axios.get("https://www.googleapis.com/youtube/v3/search", {
-        params: {
-          key: API_KEY,
-          type: "video",
-          part: "snippet",
-          q: searchTerm
-        }
-      }).then(data => {
-        console.log('youtube response is: ', data);
-      });
+      axios
+        .get("https://www.googleapis.com/youtube/v3/search", {
+          params: {
+            key: API_KEY,
+            type: "video",
+            part: "snippet",
+            q: searchTerm
+          }
+        })
+        .then(data => {
+          console.log("youtube response is: ", data);
+        });
     }
   }
 };
