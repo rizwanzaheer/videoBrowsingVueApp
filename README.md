@@ -1,4 +1,7 @@
 # video-browser
+```
+Broswe video from youtube using youtube API's
+```
 
 ## Project setup
 ```
