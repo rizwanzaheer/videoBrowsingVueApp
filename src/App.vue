@@ -7,9 +7,10 @@
 </template>
 
 <script>
+import axios from "axios";
 import HelloWorld from "./components/HelloWorld.vue";
 import SearchBar from "./components/SearchBar.vue";
-const API_KEY = 'AIzaSyBDHxTtzOZM4d_0inRjfvyQc8YZh9T4O-k';
+const API_KEY = "AIzaSyBDHxTtzOZM4d_0inRjfvyQc8YZh9T4O-k";
 
 export default {
   name: "app",
@@ -20,6 +21,16 @@ export default {
   methods: {
     onTermChange: searchTerm => {
       console.log("searchTerm is: ", searchTerm);
+      axios.get("https://www.googleapis.com/youtube/v3/search", {
+        params: {
+          key: API_KEY,
+          type: "video",
+          part: "snippet",
+          q: searchTerm
+        }
+      }).then(data => {
+        console.log('youtube response is: ', data);
+      });
     }
   }
 };
