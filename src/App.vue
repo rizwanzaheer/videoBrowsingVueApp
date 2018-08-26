@@ -2,7 +2,7 @@
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome Rizwan, In Vue.js App "/> -->
-    <SearchBar />
+    <SearchBar @termChange="onTermChange"></SearchBar>
   </div>
 </template>
 
@@ -15,6 +15,11 @@ export default {
   components: {
     // HelloWorld,
     SearchBar
+  },
+  methods: {
+    onTermChange: searchTerm => {
+      console.log("searchTerm is: ", searchTerm);
+    }
   }
 };
 </script>
