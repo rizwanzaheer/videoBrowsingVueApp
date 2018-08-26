@@ -10,6 +10,7 @@ export default {
   methods: {
     onInput: e => {
       console.log(e.target.value);
+      this.$emit("termChange", e.target.value);
     }
   }
 };
