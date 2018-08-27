@@ -29,7 +29,7 @@ export default {
     };
   },
   methods: {
-    onTermChange: searchTerm => {
+    onTermChange(searchTerm) {
       console.log("searchTerm is: ", searchTerm);
       axios
         .get("https://www.googleapis.com/youtube/v3/search", {
@@ -41,9 +41,8 @@ export default {
           }
         })
         .then(res => {
-          console.log("youtube response is: ", res.data.items);
-          this.videos = res.data.items;
-          console.log('after setting videos: ', this.videos);
+          console.log('this is: ', this);
+          this.videos = res.data.items.length;
         });
     }
   }
