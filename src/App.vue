@@ -2,8 +2,8 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <SearchBar @termChange="onTermChange"></SearchBar>
-    <VideoList />
-    {{ videos }}
+    <VideoList :videos="videos"> </VideoList>
+    {{ videos.length }}
     <HelloWorld msg="Welcome Rizwan, In Vue.js App "/>
   </div>
 </template>
@@ -41,8 +41,8 @@ export default {
           }
         })
         .then(res => {
-          console.log('this is: ', this);
-          this.videos = res.data.items.length;
+          console.log("this is: ", this);
+          this.videos = res.data.items;
         });
     }
   }
