@@ -9,8 +9,8 @@
 
     <VideoListItem
      v-for="video in videos"
-     v-bind:key="video.url"
-     v-bind:video="video"
+     :key="video.etag"
+     :video="video"
     >
 
     </VideoListItem>
