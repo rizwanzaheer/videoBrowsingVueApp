@@ -2,7 +2,7 @@
   <div id="app" class="container">
     <img alt="Vue logo" src="./assets/logo.png">
     <SearchBar @termChange="onTermChange"></SearchBar>
-    <VideoList :videos="videos"> </VideoList>
+    <VideoList @videoSelect="onVideoSelect" :videos="videos"> </VideoList>
     {{ videos.length }}
     <HelloWorld msg="Welcome Rizwan, In Vue.js App "/>
   </div>
@@ -44,6 +44,9 @@ export default {
           console.log("this is: ", this);
           this.videos = res.data.items;
         });
+    },
+    onVideoSelect(video) {
+      console.log("video is here: ", video);
     }
   }
 };
