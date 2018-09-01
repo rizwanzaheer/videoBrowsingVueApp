@@ -2,8 +2,10 @@
   <div id="app" class="container">
     <img alt="Vue logo" src="./assets/logo.png">
     <SearchBar @termChange="onTermChange" />
-    <VideoDetail :video="selectedVideo" />
-    <VideoList @videoSelect="onVideoSelect" :videos="videos" />
+    <div class="row">
+      <VideoDetail :video="selectedVideo" />
+      <VideoList @videoSelect="onVideoSelect" :videos="videos" />
+    </div>
     <HelloWorld msg="Welcome Rizwan, In Vue.js App "/>
   </div>
 </template>
