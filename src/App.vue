@@ -1,9 +1,9 @@
 <template>
   <div id="app" class="container">
     <img alt="Vue logo" src="./assets/logo.png">
-    <SearchBar @termChange="onTermChange"></SearchBar>
-    <VideoList @videoSelect="onVideoSelect" :videos="videos"> </VideoList>
-    {{ videos.length }}
+    <SearchBar @termChange="onTermChange" />
+    <VideoDetail :video="selectedVideo" />
+    <VideoList @videoSelect="onVideoSelect" :videos="videos" />
     <HelloWorld msg="Welcome Rizwan, In Vue.js App "/>
   </div>
 </template>
@@ -13,6 +13,7 @@ import axios from "axios";
 import HelloWorld from "./components/HelloWorld.vue";
 import SearchBar from "./components/SearchBar.vue";
 import VideoList from "./components/VideoList.vue";
+import VideoDetail from "./components/VideoDetail.vue";
 
 const API_KEY = "AIzaSyBDHxTtzOZM4d_0inRjfvyQc8YZh9T4O-k";
 
@@ -21,11 +22,13 @@ export default {
   components: {
     HelloWorld,
     SearchBar,
-    VideoList
+    VideoList,
+    VideoDetail
   },
   data() {
     return {
-      videos: []
+      videos: [],
+      selectedVideo: null
     };
   },
   methods: {
@@ -47,6 +50,7 @@ export default {
     },
     onVideoSelect(video) {
       console.log("video is here: ", video);
+      this.selectedVideo = video;
     }
   }
 };
