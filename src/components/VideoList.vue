@@ -1,18 +1,10 @@
 <template>
-  <ul>
-    <li>
-      Video List
-    </li>
-    <li>
-      props length:{{ videos.length }}
-    </li>
-
+  <ul class="list-group">
     <VideoListItem
      v-for="video in videos"
      :key="video.etag"
      :video="video"
     >
-
     </VideoListItem>
   </ul>
 </template>
